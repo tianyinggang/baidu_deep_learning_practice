@@ -10,7 +10,7 @@ sys.path.append('../')
 
 
 def read_md(nameMD):
-    with open(nameMD,'rb') as f:
+    with open(nameMD) as f:
         lines = f.readlines()
     lines = [i.strip() for i in lines]
     delete = u'[’!"#$%&\'()*+,-./:：;<=>?@，。?★、…【】《》？“”‘’！[\\]^_`{|}~]+'  # 用户也可以在此进行自定义过滤字符
@@ -53,12 +53,14 @@ def informationentropy(strs):  # Calculating information entropy
 
 if __name__ == "__main__":
     strs1 = read_md('data/1946-05-15_艾森豪威尔_过京沪即将赴日.md')
-    # a = input('请选择分词方法：' + '\n' + '1.jieba分词' + '\n' + '2.paddle_LAC分词' + '\n' + '请输入【1/2】')
-    # if a == 1:
-    # arr = Keyword_part_jieba(strs1)
-    # elif a == 2:
-    arr = Keyword_part_LAC(strs1)
-    # else:
-    #     print('please input agin')
+    a = input('请选择分词方法：' + '\n' + '1.jieba分词' + '\n' + '2.paddle_LAC分词' + '\n' + '请输入【1/2】')
+    a=int(a)
+    print('\n')
+    if a == 1:
+        arr = Keyword_part_jieba(strs1)
+    elif a == 2:
+        arr = Keyword_part_LAC(strs1)
+    else:
+        print('please input agin')
     entr = informationentropy(arr)
-    print("information entropy:{}".format(entr))
+    print('\n'+"information entropy:{}".format(entr))
